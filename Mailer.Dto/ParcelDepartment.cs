@@ -2,9 +2,9 @@
 
 namespace Mailer.Dto
 {
-    public class ParcelStatus
+    public class ParcelDepartment
     {
-        public string Department { get; set; }
+        public string DepartmentName { get; set; }
 
         public Parcel Parcel { get; set; }
     }

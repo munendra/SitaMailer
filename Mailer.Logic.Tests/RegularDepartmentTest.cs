@@ -48,7 +48,7 @@ namespace Mailer.Logic.Tests
             };
 
             var parcelStatus = _regularDepartment.Handle(parcel);
-            Assert.Equal("Regular", parcelStatus.Department);
+            Assert.Equal("Regular", parcelStatus.DepartmentName);
         }
     }
 }

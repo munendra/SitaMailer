@@ -49,7 +49,7 @@ namespace Mailer.Logic.Tests
             };
 
             var parcelStatus = _mailDepartment.Handle(parcel);
-            Assert.Equal("Mail", parcelStatus.Department);
+            Assert.Equal("Mail", parcelStatus.DepartmentName);
         }
     }
 }

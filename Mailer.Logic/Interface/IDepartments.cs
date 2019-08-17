@@ -8,6 +8,6 @@ namespace Mailer.Logic.Interface
         double? MaximumWeight { get; set; }
         string Name { get; }
        
-        ParcelStatus Handle(Parcel parcel);
+        ParcelDepartment Handle(Parcel parcel);
     }
 }

@@ -48,7 +48,7 @@ namespace Mailer.Logic.Tests
             };
 
             var parcelStatus = _mailDepartment.Handle(parcel);
-            Assert.Equal("Heavy", parcelStatus.Department);
+            Assert.Equal("Heavy", parcelStatus.DepartmentName);
         }
     }
 }

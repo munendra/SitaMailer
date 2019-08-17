@@ -44,7 +44,7 @@ namespace ParcelMailer
                 Console.WriteLine($"Value: {parcelStatus.Parcel.Value}$");
                 var status = parcelStatus.Parcel.IsInsured ? "Yes" : "No";
                 Console.WriteLine($"Has Insured: {status}");
-                Console.WriteLine($"Handel by: {parcelStatus.Department} Department");
+                Console.WriteLine($"Handel by: {parcelStatus.DepartmentName} Department");
                 Console.WriteLine($"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
             }
 

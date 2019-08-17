@@ -17,13 +17,13 @@ namespace Mailer.Logic.Implementation
             Name = "Heavy";
         }
 
-        public new ParcelStatus Handle(Parcel parcel)
+        public new ParcelDepartment Handle(Parcel parcel)
         {
             parcel =  base.Handle(parcel);
-            return new ParcelStatus
+            return new ParcelDepartment
             {
                 Parcel = parcel,
-                Department = Name
+                DepartmentName = Name
             };
         }
     }
