@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Container_68465468.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Container_68465468.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mailer.DependencyMapper\Mailer.DependencyMapper.csproj" />
+    <ProjectReference Include="..\Mailer.Dto\Mailer.Dto.csproj" />
+    <ProjectReference Include="..\Mailer.Logic.Tests\Mailer.Logic.Tests.csproj" />
+    <ProjectReference Include="..\Mailer.Logic\Mailer.Logic.csproj" />
+  </ItemGroup>
+
+</Project>

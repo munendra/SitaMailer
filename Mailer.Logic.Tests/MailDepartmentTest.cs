@@ -1,5 +1,8 @@
-﻿using Mailer.Dto;
+﻿using System;
+using Mailer.Dto;
 using Mailer.Logic.Implementation;
+using Mailer.Logic.Interface;
+using Moq;
 using Xunit;
 
 namespace Mailer.Logic.Tests
@@ -7,12 +10,14 @@ namespace Mailer.Logic.Tests
     public class MailDepartmentTest
     {
         private readonly MailDepartment _mailDepartment;
-
+        private Mock<IInsuranceDepartment> _insuranceDepartment;
         public MailDepartmentTest()
         {
-            _mailDepartment = new MailDepartment();
+            _insuranceDepartment = new Mock<IInsuranceDepartment>();
+            _mailDepartment = new MailDepartment(_insuranceDepartment.Object);
         }
 
+     
         [Fact]
         public void MailDepartment_Handle_ShouldReturnParcelWithDeliverdDepartmentNameMail()
         {

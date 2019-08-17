@@ -6,14 +6,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Mailer.Logic.Implementation
 {
-    public class DepartmentsProvider : IDepartmentsProvider
+    public class DepartmentService : IDepartmentService
     {
         private readonly IServiceProvider _serviceProvider;
-        public DepartmentsProvider(IServiceProvider serviceProvider)
+
+        public DepartmentService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
-        public IDepartments Departments(Parcel parcel)
+
+        public IDepartments GetDepartment(Parcel parcel)
         {
             IDepartments selectedDepartment = null;
             var departments = _serviceProvider.GetServices<IDepartments>().ToList();
@@ -25,20 +27,20 @@ namespace Mailer.Logic.Implementation
 
             foreach (var department in departments)
             {
-                if (parcel.Weight > department.WeightMin && parcel.Weight < department.WeightMax)
+                if (parcel.Weight > department.MinmumWeight && parcel.Weight < department.MaximumWeight)
                 {
                     selectedDepartment = department;
                     break;
                 }
 
 
-                if (parcel.Weight > department.WeightMin && department.WeightMax == null)
+                if (parcel.Weight > department.MinmumWeight && department.MaximumWeight == null)
                 {
                     selectedDepartment = department;
                     break;
                 }
 
-                if (parcel.Value > department.Value && department.WeightMax == null && department.WeightMin == null)
+                if (department.MaximumWeight == null && department.MinmumWeight == null)
                 {
                     selectedDepartment = department;
                     break;

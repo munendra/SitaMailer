@@ -3,23 +3,23 @@ using Mailer.Logic.Interface;
 
 namespace Mailer.Logic.Implementation
 {
-    public class MailDepartment : IDepartments
+    public class MailDepartment : BaseDepartment, IDepartments
     {
-        public double? WeightMin { get; set; }
-        public double? WeightMax { get; set; }
+        public double? MinmumWeight { get; set; }
+        public double? MaximumWeight { get; set; }
         public string Name { get; }
-        public double Value { get; set; }
 
-        public MailDepartment()
+
+        public MailDepartment(IInsuranceDepartment insuranceDepartment) : base(insuranceDepartment)
         {
-            WeightMin = 0;
-            WeightMax = 1;
-            Value = 0;
+            MinmumWeight = 0;
+            MaximumWeight = 1;
             Name = "Mail";
         }
 
         public ParcelStatus Handle(Parcel parcel)
         {
+            parcel = base.Handle(parcel);
             return new ParcelStatus
             {
                 Parcel = parcel,

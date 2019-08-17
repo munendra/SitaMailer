@@ -1,5 +1,7 @@
 ﻿using Mailer.Dto;
 using Mailer.Logic.Implementation;
+using Mailer.Logic.Interface;
+using Moq;
 using Xunit;
 
 namespace Mailer.Logic.Tests
@@ -7,10 +9,12 @@ namespace Mailer.Logic.Tests
     public class RegularDepartmentTest
     {
         private readonly RegularDepartment _regularDepartment;
+        private readonly Mock<IInsuranceDepartment> _InsuranceDepartment;
 
         public RegularDepartmentTest()
         {
-            _regularDepartment = new RegularDepartment();
+            _InsuranceDepartment = new Mock<IInsuranceDepartment>();
+            _regularDepartment = new RegularDepartment(_InsuranceDepartment.Object);
         }
 
         [Fact]

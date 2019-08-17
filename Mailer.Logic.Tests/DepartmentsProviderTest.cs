@@ -9,12 +9,12 @@ namespace Mailer.Logic.Tests
 {
     public class DepartmentsProviderTest
     {
-        private readonly DepartmentsProvider _departmentsProvider;
+        private readonly DepartmentService _departmentService;
 
         public DepartmentsProviderTest()
         {
             var serviceProvider = Mapper.Map();
-            _departmentsProvider = new DepartmentsProvider(serviceProvider);
+            _departmentService = new DepartmentService(serviceProvider);
         }
 
 
@@ -24,7 +24,7 @@ namespace Mailer.Logic.Tests
             var parcel = new Parcel();
             parcel.Weight = 0.5;
             parcel.Value = 0;
-            var department = _departmentsProvider.Departments(parcel);
+            var department = _departmentService.GetDepartment(parcel);
             Assert.IsType<MailDepartment>(department);
         }
 
@@ -34,7 +34,7 @@ namespace Mailer.Logic.Tests
             var parcel = new Parcel();
             parcel.Weight = 5;
             parcel.Value = 0;
-            var department = _departmentsProvider.Departments(parcel);
+            var department = _departmentService.GetDepartment(parcel);
             Assert.IsType<RegularDepartment>(department);
         }
 
@@ -68,7 +68,7 @@ namespace Mailer.Logic.Tests
             };
             parcel.Weight = 11;
             parcel.Value = 0;
-            var department = _departmentsProvider.Departments(parcel);
+            var department = _departmentService.GetDepartment(parcel);
             Assert.IsType<HeavyDepartment>(department);
         }
 
@@ -78,7 +78,7 @@ namespace Mailer.Logic.Tests
             var parcel = new Parcel();
             parcel.Weight = 20;
             parcel.Value = 0;
-            var department = _departmentsProvider.Departments(parcel);
+            var department = _departmentService.GetDepartment(parcel);
             Assert.IsType<HeavyDepartment>(department);
         }
 
@@ -112,7 +112,7 @@ namespace Mailer.Logic.Tests
             };
             parcel.Weight = 20;
             parcel.Value = 2000;
-            var department = _departmentsProvider.Departments(parcel);
+            var department = _departmentService.GetDepartment(parcel);
             Assert.IsType<HeavyDepartment>(department);
         }
     }
